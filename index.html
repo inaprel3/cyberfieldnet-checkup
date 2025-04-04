@@ -2,8 +2,8 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CyberFieldNet Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CyberFieldNet Перевірка</title>
   <style>
     body {
       background-color: #f4f6f9;
@@ -14,33 +14,34 @@
       height: 100vh;
       margin: 0;
     }
-    .login-container {
+    .container {
       background-color: #fff;
       padding: 40px;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
       width: 100%;
-      max-width: 400px;
+      max-width: 450px;
     }
-    .login-container h2 {
+    h2 {
       margin-bottom: 20px;
-      font-size: 24px;
+      font-size: 22px;
       color: #333;
+      text-align: center;
     }
-    .login-container label {
+    label {
       display: block;
       margin-top: 15px;
       font-size: 14px;
       color: #444;
     }
-    .login-container input {
+    input {
       width: 100%;
       padding: 10px;
       margin-top: 5px;
       border: 1px solid #ccc;
       border-radius: 8px;
     }
-    .login-container button {
+    button {
       margin-top: 25px;
       width: 100%;
       padding: 12px;
@@ -51,40 +52,72 @@
       font-size: 16px;
       cursor: pointer;
     }
-    .login-container .note {
+    .note {
       margin-top: 20px;
       font-size: 12px;
       color: #777;
+      text-align: center;
+    }
+    .result {
+      text-align: center;
+      display: none;
+    }
+    .result h2 {
+      color: #cc0000;
+    }
+    .signature {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #555;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <div class="login-container">
-    <h2>Вхід у систему CyberFieldNet</h2>
-    <form onsubmit="handleLogin(event)">
-      <label for="email">Email корпоративний</label>
-      <input type="email" id="email" name="email" required />
+  <div class="container">
+    <div id="form-step">
+      <h2>Верифікація профілю CyberFieldNet</h2>
+      <form onsubmit="handleSubmit(event)">
+        <label for="fname">Ім'я</label>
+        <input type="text" id="fname" name="fname" required />
 
-      <label for="password">Пароль</label>
-      <input type="password" id="password" name="password" required />
+        <label for="lname">Прізвище</label>
+        <input type="text" id="lname" name="lname" required />
 
-      <button type="submit">Увійти</button>
-    </form>
-    <div class="note">* Не передавайте пароль третім особам</div>
+        <label for="position">Посада</label>
+        <input type="text" id="position" name="position" required />
+
+        <button type="submit">Далі</button>
+      </form>
+      <div class="note">* Не передавайте свої дані третім особам</div>
+    </div>
+
+    <div id="result-step" class="result">
+      <h2>🎣 Вас щойно зловили на фішинг!</h2>
+      <p>Це навчальний тест з кібербезпеки.</p>
+      <div class="signature">
+        Створено: Цимбал Анастасія<br/>
+        Стажер з кібербезпеки, 2 група
+      </div>
+    </div>
   </div>
 
   <script>
-    function handleLogin(event) {
+    function handleSubmit(event) {
       event.preventDefault();
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
 
-      // 🔐 Для тесту — просто вивести в консоль (можна змінити на POST-запит)
-      console.log('Логін:', email);
-      console.log('Пароль:', password);
+      // Заховати форму та показати результат
+      document.getElementById('form-step').style.display = 'none';
+      document.getElementById('result-step').style.display = 'block';
 
-      // Можна перенаправити на "справжню" сторінку після логіну
-      window.location.href = "https://cyberfieldnet.com/dashboard";
+      // Опціонально: логування в консоль для тесту
+      const fname = document.getElementById('fname').value;
+      const lname = document.getElementById('lname').value;
+      const position = document.getElementById('position').value;
+
+      console.log('Ім\'я:', fname);
+      console.log('Прізвище:', lname);
+      console.log('Посада:', position);
     }
   </script>
 </body>
