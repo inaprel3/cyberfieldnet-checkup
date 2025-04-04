@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CyberFieldNet Login</title>
+  <style>
+    body {
+      background-color: #f4f6f9;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-container {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+    .login-container h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #333;
+    }
+    .login-container label {
+      display: block;
+      margin-top: 15px;
+      font-size: 14px;
+      color: #444;
+    }
+    .login-container input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    .login-container button {
+      margin-top: 25px;
+      width: 100%;
+      padding: 12px;
+      background-color: #004d99;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .login-container .note {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Вхід у систему CyberFieldNet</h2>
+    <form onsubmit="handleLogin(event)">
+      <label for="email">Email корпоративний</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="password">Пароль</label>
+      <input type="password" id="password" name="password" required />
+
+      <button type="submit">Увійти</button>
+    </form>
+    <div class="note">* Не передавайте пароль третім особам</div>
+  </div>
+
+  <script>
+    function handleLogin(event) {
+      event.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      // 🔐 Для тесту — просто вивести в консоль (можна змінити на POST-запит)
+      console.log('Логін:', email);
+      console.log('Пароль:', password);
+
+      // Можна перенаправити на "справжню" сторінку після логіну
+      window.location.href = "https://cyberfieldnet.com/dashboard";
+    }
+  </script>
+</body>
+</html>
